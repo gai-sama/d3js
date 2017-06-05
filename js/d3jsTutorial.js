@@ -73,7 +73,7 @@ function donutChart ()
     d3.json("data/suicide-squad.json", function (data)
     {
         var radius      = 100;
-        var color       = d3.scale.ordinal()
+        var color       = d3.scaleOrdinal()
             .range(["red", "orange", "yellow", "green", "blue", "indigo", "violet"]);
 
         var canvas      = d3.select(".donutChart")
@@ -84,11 +84,11 @@ function donutChart ()
         var group       = canvas.append("g")
             .attr("transform", "translate(500,350)");
 
-        var arc         = d3.svg.arc()
+        var arc         = d3.arc()
             .innerRadius(50)
             .outerRadius(radius);
 
-        var pie         = d3.layout.pie()
+        var pie         = d3.pie()
             .value(function (d)
             {
                 return d.rank;
